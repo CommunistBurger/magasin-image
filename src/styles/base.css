@@ -1,0 +1,187 @@
+/* ═══════════════════════════════════════════════
+   base.css — Variables, reset global, body
+   ═══════════════════════════════════════════════ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg:        #070707;
+  --surface:   #151515;
+  --surface2:  #1a1a1a;
+  --border:    #272727;
+  --text:      #c7c7c7;
+  --muted:     #818181;
+  --amber:     #8d4cad;
+  --amber-dim: #4e2b5f;
+  --white:     #cccccc;
+
+  --font-d: 'Barlow Condensed', sans-serif;
+  --font-b: 'Barlow', sans-serif;
+  --font-m: 'IBM Plex Mono', monospace;
+}
+
+body[data-theme='camera'] {
+  --amber:     #4da86a;
+  --amber-dim: #2e5f3b;
+}
+
+body[data-theme='objectifs'] {
+  --amber:     #4d8fad;
+  --amber-dim: #2b5263;
+}
+
+body[data-theme='grip'] {
+  --amber:     #d27a2c;
+  --amber-dim: #7b4315;
+}
+
+body[data-theme='lumiere'] {
+  --amber:     #d2b52d;
+  --amber-dim: #736117;
+}
+
+body[data-theme='machinerie'] {
+  --amber:     #c84d44;
+  --amber-dim: #6f2924;
+}
+
+body[data-theme='accessoires'] {
+  --amber:     #8d4cad;
+  --amber-dim: #4e2b5f;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background:   var(--bg);
+  color:        var(--text);
+  font-family:  var(--font-b);
+  min-height:   100vh;
+  overflow-x:   hidden;
+}
+
+body.intro-active {
+  overflow: hidden;
+}
+
+body.intro-active header,
+body.intro-active .view {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.intro-overlay {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: #000;
+  z-index: 1000;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity .2s ease, visibility .2s ease;
+}
+
+.intro-overlay.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.intro-logo {
+  width: min(48vw, 280px);
+  max-width: 280px;
+  height: auto;
+  opacity: .96;
+}
+
+body:not(.intro-active) header,
+body:not(.intro-active) .view {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity .35s ease, visibility .35s ease;
+}
+
+/* Grain de texture */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: .03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 256px;
+}
+
+/* Gestion des vues */
+.view        { display: none; }
+.view.active { display: block; }
+
+/* Footer commun */
+footer {
+  border-top: none;
+  max-width:  1360px;
+  margin:     0 auto;
+  padding:    22px 36px;
+  display:    flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.f-left {
+  font-family:    var(--font-d);
+  font-weight:    600;
+  font-size:      12px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color:          var(--muted);
+}
+.f-right {
+  display:        flex;
+  align-items:    center;
+  justify-content: flex-end;
+  gap:            8px;
+  margin-left:    auto;
+}
+
+.footer-contact-btn {
+  border:         1px solid transparent;
+  background:     none;
+  color:          var(--muted);
+  font-family:    var(--font-m);
+  font-size:      13px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  cursor:         pointer;
+  white-space:    nowrap;
+  padding:        6px 9px;
+  transition:     color .2s, border-color .2s;
+}
+
+.footer-contact-btn:hover {
+  color: var(--white);
+}
+
+.footer-contact-btn.active {
+  color:        var(--amber);
+  border-color: var(--amber-dim);
+}
+
+/* Animation commune */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

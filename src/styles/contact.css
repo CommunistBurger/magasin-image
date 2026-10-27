@@ -1,0 +1,78 @@
+/* ═══════════════════════════════════════════════
+   contact.css — Page contact avec infos de contact
+   ═══════════════════════════════════════════════ */
+
+.contact-body {
+  max-width:  1360px;
+  margin:     0 auto;
+  padding:    40px 36px 80px;
+}
+
+.contact-list {
+  display:               grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap:                   1px;
+  background:            var(--border);
+  border:                1px solid var(--border);
+}
+
+.contact-card {
+  background:     var(--surface);
+  padding:        28px;
+  display:        flex;
+  flex-direction: column;
+  gap:            16px;
+  transition:     background .2s;
+}
+
+.contact-card:hover {
+  background: var(--surface2);
+}
+
+.contact-name {
+  font-family:    var(--font-d);
+  font-weight:    700;
+  font-size:      20px;
+  letter-spacing: .02em;
+  text-transform: uppercase;
+  color:          var(--white);
+}
+
+.contact-role {
+  font-family:    var(--font-m);
+  font-size:      10px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color:          var(--amber);
+}
+
+.contact-item {
+  display:        flex;
+  flex-direction: column;
+  gap:            6px;
+}
+
+.contact-label {
+  font-family:    var(--font-m);
+  font-size:      9px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color:          var(--muted);
+}
+
+.contact-value {
+  font-family:    var(--font-s);
+  font-size:      14px;
+  color:          var(--text);
+  word-break:     break-word;
+}
+
+.contact-value a {
+  color:          var(--amber);
+  text-decoration: none;
+  transition:     color .2s;
+}
+
+.contact-value a:hover {
+  color: #ffc44d;
+}

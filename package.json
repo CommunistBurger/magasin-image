@@ -1,0 +1,33 @@
+{
+  "name": "magasin-image",
+  "version": "1.0.0",
+  "description": "Catalogue équipement — Magasin Image INSAS",
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "vite.config.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "sheet:create": "node tools/google-sheet/createSheetFromCatalogue.mjs",
+    "sheet:apps-script": "node tools/google-sheet/generateAppsScriptValidation.mjs",
+    "sheet:cloudinary-sync": "node tools/google-sheet/syncSheetImagesFromCloudinary.mjs",
+    "sheet:contacts-tab": "node tools/google-sheet/applyContactsSheet.mjs"
+  },
+  "dependencies": {
+    "esbuild": "^0.28.1",
+    "googleapis": "^173.0.0",
+    "nanoid": "^3.3.11",
+    "picocolors": "^1.1.1",
+    "postcss": "^8.5.8",
+    "rollup": "^4.60.0",
+    "source-map-js": "^1.2.1"
+  },
+  "devDependencies": {
+    "vite": "^8.1.4"
+  },
+  "optionalDependencies": {
+    "fsevents": "^2.3.3"
+  }
+}
